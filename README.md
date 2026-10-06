@@ -5,24 +5,25 @@ Mídias (imagens, variantes responsivas, capas e vídeos) usadas pelos blocos de
 
 URL base dos arquivos (CDN jsDelivr, **fixada numa versão/tag**):
 
-    https://cdn.jsdelivr.net/gh/Eroscv/livup-lps-midias@v1/lp/
+    https://cdn.jsdelivr.net/gh/Eroscv/livup-lps-midias@v2/lp/
 
-Os blocos usam `@v1`, e não `@main`: o conteúdo de uma tag não muda, então um commit novo aqui nunca altera as páginas
+Os blocos usam `@v2` (a versão atual), e não `@main`: o conteúdo de uma tag não muda, então um commit novo aqui nunca altera as páginas
 publicadas sem querer. (Não use o GitHub raw: serve `.mp4` como `application/octet-stream` e `.webm` como `audio/webm`
 e o vídeo travava no Safari do iPhone.)
 
 ## Arquivos (`lp/`)
 - `bc-*` / `perf-*` / `linha-*` `.webp`: imagens otimizadas; sufixos `-320/-384/-480/-640/-720` são variantes menores (srcset).
-- `*-hero-poster.webp`: capa do vídeo do topo.
-- `bc-hero*` e `perf-hero*`: vídeo do topo em três formatos: `-av1.mp4` (AV1), `.webm` (VP9) e `.mp4` (H.264).
+- `*-hero-poster.webp`: capa do vídeo do topo (Baixa Caloria).
+- `perf-hero.webp` (+ `-480`/`-720`): imagem do topo da Performance (colagem de atletas), no lugar do vídeo a partir da `v2`.
+- `bc-hero*`: vídeo do topo da Baixa Caloria em três formatos (`perf-hero*.mp4/.webm` e `perf-hero-poster.webp` são o vídeo antigo da Performance, usado só na `v1`): `-av1.mp4` (AV1), `.webm` (VP9) e `.mp4` (H.264).
 
 Os blocos escolhem o primeiro formato que o navegador souber tocar. **Não renomeie os arquivos**: os blocos dependem dos nomes.
 
 ## Publicar uma mídia nova ou trocada (nova versão)
 1. Coloque/substitua o arquivo em `lp/` (mantendo o nome se for troca), faça commit e push em `main`.
-2. Crie a tag da próxima versão e envie: `git tag v2 && git push origin v2`.
-3. Nos blocos do CMS, localize e substitua `livup-lps-midias@v1` por `livup-lps-midias@v2` e republique.
+2. Crie a tag da próxima versão (a atual é `v2`) e envie: `git tag v3 && git push origin v3`.
+3. Nos blocos do CMS, localize e substitua `livup-lps-midias@v2` por `livup-lps-midias@v3` e republique.
 
 Não mova nem reescreva uma tag que já foi usada: a jsDelivr guarda o conteúdo de tags por muito tempo (não dá para limpar).
-Versões anteriores continuam disponíveis, então dá para voltar atrás trocando `@v2` por `@v1`.
+Versões anteriores continuam disponíveis, então dá para voltar atrás trocando `@v3` por `@v2`.
 O repositório precisa continuar **público**.
